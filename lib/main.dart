@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/engine/pokedex_srvc.dart';
 import 'package:pokedex/engine/pokedex_mdl.dart';
 import 'package:pokedex/searchres.dart';
-import 'package:pokedex/engine/ApiUrl.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,8 +26,6 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   List<PokedexMdl> pokedexList;
-  List ability;
-
   List<PokedexMdl> get getPokedex => pokedexList;
   bool isSearching = false;
   int id = 0;
