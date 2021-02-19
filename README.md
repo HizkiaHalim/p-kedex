@@ -2,5 +2,5 @@
 
 Tugas mobile programming
 
-Nama : Hizkia Halim
+Nama : Hizkia Halim;
 NPM : 535190001
