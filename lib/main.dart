@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex/dets.dart';
 import 'package:pokedex/engine/pokedex_srvc.dart';
 import 'package:pokedex/engine/pokedex_mdl.dart';
 import 'package:pokedex/searchres.dart';
@@ -41,7 +42,7 @@ class _HomepageState extends State<Homepage> {
         var dt = await Pokedexsrvc.fetchPokemon(id.toString());
         if (dt != null) {
           setState(() {
-            pokedexList.add(PokedexMdl.fromJson(dt));
+            pokedexList.add(PokedexMdl.abilFromJson(dt));
           });
         }
       }
@@ -113,49 +114,12 @@ class _HomepageState extends State<Homepage> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      child: new AlertDialog(
-                                        title: new Text(
-                                            "#${pokedexList[index].id}   ${pokedexList[index].name}"),
-                                        content: SingleChildScrollView(
-                                          child: ListBody(
-                                            children: <Widget>[
-                                              Image(
-                                                image: NetworkImage(
-                                                    pokedexList[index].sprites,
-                                                    scale: 0.5),
-                                              ),
-                                              Text(
-                                                'id : #${pokedexList[index].id}',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              Text(
-                                                'height : ${pokedexList[index].height} decimeters',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              Text(
-                                                'weight : ${pokedexList[index].weight} hectograms',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              Text(
-                                                'Base exp : ${pokedexList[index].basexp}',
-                                                style: TextStyle(fontSize: 20),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          TextButton(
-                                              child: Text(
-                                                'Back',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              })
-                                        ],
-                                      ));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Dets(
+                                                det: pokedexList[index],
+                                              )));
                                 },
                                 child: ListTile(
                                   leading: CircleAvatar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/dets.dart';
 import 'package:pokedex/engine/pokedex_mdl.dart';
 import 'package:pokedex/engine/pokedex_srvc.dart';
 
@@ -20,7 +21,7 @@ class _State extends State<Searchres> {
     var dt = await Pokedexsrvc.fetchPokemon(widget.query.toString());
     if (dt != null) {
       setState(() {
-        searchList.add(PokedexMdl.fromJson(dt));
+        searchList.add(PokedexMdl.abilFromJson(dt));
       });
     }
     print(searchList.length);
@@ -50,49 +51,12 @@ class _State extends State<Searchres> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      child: new AlertDialog(
-                                        title: new Text(
-                                            "#${searchList[index].id}   ${searchList[index].name}"),
-                                        content: SingleChildScrollView(
-                                          child: ListBody(
-                                            children: <Widget>[
-                                              Image(
-                                                image: NetworkImage(
-                                                    searchList[index].sprites,
-                                                    scale: 0.5),
-                                              ),
-                                              Text(
-                                                'id : #${searchList[index].id}',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              Text(
-                                                'height : ${searchList[index].height} decimeters',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              Text(
-                                                'weight : ${searchList[index].weight} hectograms',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              Text(
-                                                'Base exp : ${searchList[index].basexp}',
-                                                style: TextStyle(fontSize: 20),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          TextButton(
-                                              child: Text(
-                                                'Back',
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              })
-                                        ],
-                                      ));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Dets(
+                                                det: searchList[index],
+                                              )));
                                 },
                                 child: ListTile(
                                   leading: CircleAvatar(

@@ -5,6 +5,8 @@ class PokedexMdl {
   double height;
   double weight;
   String sprites;
+  List<String> abilities;
+  List<String> type;
 
   PokedexMdl(
       {this.id,
@@ -12,9 +14,11 @@ class PokedexMdl {
       this.basexp,
       this.height,
       this.weight,
-      this.sprites});
+      this.sprites,
+      this.abilities,
+      this.type});
 
-  factory PokedexMdl.fromJson(Map<String, dynamic> json) {
+  factory PokedexMdl.mainFromJson(Map<String, dynamic> json) {
     return PokedexMdl(
         id: json['id'],
         name: json['name'],
@@ -22,5 +26,23 @@ class PokedexMdl {
         height: double.parse(json["height"].toString()),
         weight: double.parse(json["weight"].toString()),
         sprites: json['sprites']['front_default']);
+  }
+
+  factory PokedexMdl.abilFromJson(Map<String, dynamic> json) {
+    List<String> _aname = (json['abilities'] as List)
+        .map((res) => res['ability']['name'].toString())
+        .toList();
+    List<String> _tipe = (json['types'] as List)
+        .map((data) => data['type']['name'].toString())
+        .toList();
+    return PokedexMdl(
+        id: json['id'],
+        name: json['name'],
+        basexp: json['base_experience'],
+        height: double.parse(json["height"].toString()),
+        weight: double.parse(json["weight"].toString()),
+        sprites: json['sprites']['front_default'],
+        abilities: _aname,
+        type: _tipe);
   }
 }
