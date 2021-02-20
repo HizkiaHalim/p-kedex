@@ -81,7 +81,7 @@ class _HomepageState extends State<Homepage> {
                         Icons.search,
                         color: Colors.white,
                       ),
-                      hintText: "Search Pokemon Name or ID Here",
+                      hintText: "Masukan nama lengkap/id pokemon",
                       hintStyle: TextStyle(color: Colors.white))),
           actions: <Widget>[
             isSearching
