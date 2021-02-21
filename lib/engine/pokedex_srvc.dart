@@ -8,7 +8,7 @@ class Pokedexsrvc {
         options: Options(headers: {"Accept": "application/json"}));
     if (response.statusCode == 200) {
       return response.data;
-    } else if (response.statusCode == 200) {
+    } else if (response.statusCode != 200) {
       return null;
     }
   }

@@ -42,7 +42,9 @@ class _HomepageState extends State<Homepage> {
         var dt = await Pokedexsrvc.fetchPokemon(id.toString());
         if (dt != null) {
           setState(() {
+            print("parsing & adding data");
             pokedexList.add(PokedexMdl.abilFromJson(dt));
+            print("next!");
           });
         }
       }

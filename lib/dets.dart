@@ -24,26 +24,26 @@ class Dets extends StatelessWidget {
             Container(
               child: Text(
                 "ID : #${det.id}",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 25),
                 textAlign: TextAlign.left,
               ),
             ),
             Container(
               child: Text(
                 "Name : ${det.name}",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 25),
               ),
             ),
             Container(
               child: Text(
                 "Height : ${det.height} decimeter",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 25),
               ),
             ),
             Container(
               child: Text(
                 "Weight : ${det.weight} hectograms",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 25),
               ),
             ),
             Row(
@@ -56,12 +56,12 @@ class Dets extends StatelessWidget {
                     Container(
                       child: Text(
                         "Abilities : ",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 25),
                       ),
                     ),
                     Container(
                       width: 220,
-                      height: 200,
+                      height: 220,
                       child: ListView.builder(
                         itemCount: det.abilities.length,
                         itemBuilder: (BuildContext context, int index) {
@@ -69,8 +69,8 @@ class Dets extends StatelessWidget {
                             children: [
                               Container(
                                 child: Text(
-                                  "- ${det.abilities[index]}",
-                                  style: TextStyle(fontSize: 20),
+                                  "${index + 1}. ${det.abilities[index]}",
+                                  style: TextStyle(fontSize: 25),
                                 ),
                               )
                             ],
@@ -85,13 +85,13 @@ class Dets extends StatelessWidget {
                     Container(
                       child: Text(
                         "Type : ",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 25),
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: 10),
-                      width: 80,
-                      height: 200,
+                      width: 100,
+                      height: 220,
                       child: ListView.builder(
                           itemCount: det.type.length,
                           itemBuilder: (BuildContext context, int index) {
@@ -100,7 +100,7 @@ class Dets extends StatelessWidget {
                                 Container(
                                   child: Text(
                                     "${det.type[index]}",
-                                    style: TextStyle(fontSize: 20),
+                                    style: TextStyle(fontSize: 25),
                                   ),
                                 ),
                               ],
